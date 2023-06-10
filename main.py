@@ -3,10 +3,26 @@ from retrive_top_docs import retrieve_top_docs
 from datasets import load_dataset
 from llm_generate_response import generate_response
 from read_docs import read_docs
+import json
+
+
+def get_discord_messages():
+    with open("get-discord-messages/messages.json") as f:
+        messages = json.load(f)  
+
+    message_docs = []
+    for message in messages:
+        message_docs.append(message['content'])
+        # print(message['content'])
+        # print("\n\n")
+
+    return message_docs
+
 
 def main():
     # query = "What is the capital of the United States?"
     query = "How can I create a chatbot and how can I add memory to it?"
+    # query = "FAISS.from_documents(docs, embedding) is so slow. Has anyone faced it before?"
 
     # # documents = [
     # #    "Carson City is the capital city of the American state of Nevada. At the  2010 United States Census, Carson City had a population of 55,274.",
@@ -17,16 +33,16 @@ def main():
     # #    "North Dakota is a state in the United States. 672,591 people lived in North Dakota in the year 2010. The capital and seat of government is Bismarck."
     # #    ]
     
-    data = load_dataset(f"Cohere/wikipedia-22-12", "simple", split='train', streaming=True)
-    # # sample_data = data
-    sample_data = []
+    # data = load_dataset(f"Cohere/wikipedia-22-12", "simple", split='train', streaming=True)
+    # # # sample_data = data
+    # sample_data = []
 
-    counter = 0
-    for d in data:
-        sample_data.append(d)
-        counter += 1
-        if counter == 1000:
-            break
+    # counter = 0
+    # for d in data:
+    #     sample_data.append(d)
+    #     counter += 1
+    #     if counter == 1000:
+    #         break
 
     # # all_docs =  map(lambda row : {"_index": index, "_id": row['id'], "_source": {"text": row['text']}}, data)
     # all_docs =  map(lambda row : {"_index": index, "_id": row['id'], "_source": {"text": row['text']}}, sample_data)
@@ -38,15 +54,23 @@ def main():
     # for doc in all_docs:
     #     text_docs.append(doc['_source']['text'])
 
-    text_docs = read_docs()
+    documentation_docs = read_docs() # documentation docs
+    discord_message_docs = get_discord_messages()
+
+    # all_docs = text_docs + discord_message_docs
+    # all_docs = text_docs
+
+    res_documentation = retrieve_top_docs(query, documentation_docs)
+    res_discord = retrieve_top_docs(query, discord_message_docs)
+
+    context_doc, context_discord = [], []
+    for el in res_documentation:
+        context_doc.append(el.document['text'])
     
-    res = retrieve_top_docs(query, text_docs)
+    for el in res_discord:
+        context_discord.append(el.document['text'])
 
-    contexts = []
-    for el in res:
-        contexts.append(el.document['text'])
-
-    generate_response(query=query, documents=contexts)
+    generate_response(query=query, documents_doc=context_doc, documents_discord=context_discord)
 
 
 if __name__ == "__main__":

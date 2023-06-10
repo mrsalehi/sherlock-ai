@@ -94,23 +94,27 @@ def complete_chat(messages, model='gpt-3.5-turbo', max_tokens=256,  num_log_prob
     return response
 
     
-def generate_response(query, documents, model='gpt-3.5-turbo'):
+def generate_response(query, documents_doc, documents_discord, model='gpt-3.5-turbo'):
     """
     gets the query as a string and a set of documents as a list of strings and generates the answer
     based on the documents
     """
-    doc_string = ""
-    for doc in documents:
-        doc_string += f"DOCUMENT: {doc}\n\n"
+    doc_string_documentation = ""
+    for doc in documents_doc:
+        doc_string_documentation += f"DOCUMENT: {doc}\n\n"
     
-    prompt = SYSTEM_PROMPT + USER_PROMPT.format(query, doc_string) 
+    doc_string_discord = ""
+    for doc in documents_discord:
+        doc_string_discord += f"DISCORD: {doc}\n\n"  
+
+    prompt = SYSTEM_PROMPT + USER_PROMPT.format(query, doc_string_documentation, doc_string_discord)
     
     messages = [{
         "role": "system",
         "content": SYSTEM_PROMPT
     }, {
         "role": "user",
-        "content": USER_PROMPT.format(query, doc_string)
+        "content": prompt
     }]
 
     response = complete_chat(messages, model=model, max_tokens=2048)
