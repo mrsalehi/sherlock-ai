@@ -10,10 +10,14 @@ module.exports = {
 		// Contains the user's prompt
 		const string = interaction.options.get("question").value
 
+		console.log('a')
+
+		await interaction.reply('Working on it...');
+
 		// Execute python process and wait for the answer to be in a text readable file
-		executePython(async (data) => {
-			// Send the answer back to the user
-			await interaction.reply(`You typed "${data}"`);
-		})
+		const response = await executePython(string)
+
+		console.log(response, 'response')
+		await interaction.followUp(response);
 	},
 };

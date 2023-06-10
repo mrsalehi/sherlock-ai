@@ -69,7 +69,7 @@ def read_docs():
     """
     read the markdown docs and return them as a list of strings
     """
-    docs_dir = Path("docs/")
+    docs_dir = Path("../docs/")
     doc_paths = docs_dir.rglob("*.md")
     text_docs = [] 
     for doc_p in doc_paths:
