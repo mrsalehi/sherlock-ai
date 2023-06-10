@@ -4,6 +4,8 @@ from datasets import load_dataset
 from llm_generate_response import generate_response
 from read_docs import read_docs
 import json
+from argparse import ArgumentParser
+
 
 
 def get_discord_messages():
@@ -19,9 +21,9 @@ def get_discord_messages():
     return message_docs
 
 
-def main():
+def main(query):
     # query = "What is the capital of the United States?"
-    query = "How can I create a chatbot and how can I add memory to it?"
+    # query = "How can I create a chatbot and how can I add memory to it?"
     # query = "FAISS.from_documents(docs, embedding) is so slow. Has anyone faced it before?"
 
     # # documents = [
@@ -74,5 +76,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = ArgumentParser()
+    parser.add_argument("--query", type=str, required=True)
+
+    args = parser.parse_args()
+    query = args.query
+    main(query=query)
     

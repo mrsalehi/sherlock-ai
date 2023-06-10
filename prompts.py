@@ -5,6 +5,7 @@ Here are the requirements for the output:
 2. If there are any code snippets, it is crucial to include the code snippet in the response.
 3. If you find the answer in the documentation documents, say that the answer is in documentation documents and provide the link to the documentation document if possible. It is crucial to include the name of the document that contains the answer.
 3. If you think the answer is in discord discussion, say that the answer is in discord discussion. It is crucial to include the discussion itself in this case.
+If you want to mention anything about discord in your answer, please start with "There might be some relevant discussions on discord".
 """
 
 USER_PROMPT = """
