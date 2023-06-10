@@ -1,6 +1,7 @@
 
 from retrive_top_docs import retrieve_top_docs
 from datasets import load_dataset
+from llm_generate_response import generate_response
 
 
 def main():
@@ -36,10 +37,12 @@ def main():
         text_docs.append(doc['_source']['text'])
     
     res = retrieve_top_docs(query, text_docs)
+
+    contexts = []
     for el in res:
-        # print(dir(el))
-        print(el.document['text'])
-        print()
+        contexts.append(el.document['text'])
+
+    generate_response(query=query, documents=contexts)
 
 
 if __name__ == "__main__":

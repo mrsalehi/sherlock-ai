@@ -2,18 +2,16 @@ import os
 import time
 import sys
 import openai
-import numpy as np
-from PIL import Image
-import requests
-import pyarrow as pa
+from prompts import SYSTEM_PROMPT, USER_PROMPT
 
 from multiprocessing import Pool
 from tqdm import tqdm
 
-from PIL import Image, ImageDraw
-
 from openai.error import RateLimitError, ServiceUnavailableError
 import backoff
+
+
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # class MultiProcessCaller:
 #     @staticmethod
@@ -94,3 +92,26 @@ def complete_chat(messages, model='gpt-3.5-turbo', max_tokens=256,  num_log_prob
                 c+=1
 
     return response
+
+    
+def generate_response(query, documents, model='gpt-3.5-turbo'):
+    """
+    gets the query as a string and a set of documents as a list of strings and generates the answer
+    based on the documents
+    """
+    doc_string = ""
+    for doc in documents:
+        doc_string += f"DOCUMENT: {doc}\n\n"
+    
+    prompt = SYSTEM_PROMPT + USER_PROMPT.format(query, doc_string) 
+    
+    messages = [{
+        "role": "system",
+        "content": SYSTEM_PROMPT
+    }, {
+        "role": "user",
+        "content": USER_PROMPT.format(query, doc_string)
+    }]
+
+    response = complete_chat(messages, model=model, max_tokens=2048)
+    print(response.choices[0]["message"]["content"])
