@@ -11,7 +11,8 @@ from openai.error import RateLimitError, ServiceUnavailableError
 import backoff
 
 
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+# openai.api_key = os.environ.get")
+openai.api_key = "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"
 
 # class MultiProcessCaller:
 #     @staticmethod
