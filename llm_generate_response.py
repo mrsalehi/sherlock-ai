@@ -118,5 +118,5 @@ def generate_response(query, documents_doc, documents_discord, model='gpt-3.5-tu
         "content": prompt
     }]
 
-    response = complete_chat(messages, model=model, max_tokens=2048)
+    response = complete_chat(messages, model=model, max_tokens=1500)
     print(response.choices[0]["message"]["content"])
