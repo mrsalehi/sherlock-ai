@@ -33,6 +33,38 @@ from langchain.text_splitter import CharacterTextSplitter
 # with open("faiss_store.pkl", "wb") as f:
     # pickle.dump(store, f)
 
+
+def split_string_into_chunks(text, chunk_size=512):
+    words = text.split()
+    chunks = []
+    current_chunk = []
+
+    for word in words:
+        # if len(' '.join(current_chunk + [word])) <= chunk_size:
+        if len(current_chunk) <= chunk_size:
+            current_chunk.append(word)
+        else:
+            # print(len(current_chunk))
+            chunks.append(' '.join(current_chunk))
+            # print("\n\n")
+            current_chunk = [word]
+
+    if current_chunk:
+        chunks.append(' '.join(current_chunk))
+
+    return chunks
+
+
+def chunk_docs(docs, chunk_size=512):
+    """
+    chunk the docs into smaller pieces where each piece has maximum of chunk_size words
+    """
+    chunked_docs = []
+    for doc in docs:
+        chunked_docs.extend(split_string_into_chunks(doc, chunk_size))  
+    
+    return chunked_docs
+
 def read_docs():
     """
     read the markdown docs and return them as a list of strings
@@ -42,10 +74,12 @@ def read_docs():
     text_docs = [] 
     for doc_p in doc_paths:
         with open(doc_p) as f:
-            text_docs.append(f.read())
-    
-    return text_docs 
-     
+            text_docs.append(f.read()) 
 
+    return chunk_docs(text_docs)
+
+    
 if __name__ == "__main__":
-    read_docs()
+    # read_docs()
+    for doc in read_docs():
+        print(len(doc.split()))

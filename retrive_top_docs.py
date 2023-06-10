@@ -11,6 +11,6 @@ def retrieve_top_docs(query, text_docs):
     text_docs: a list of strings where each one is a doc
     """
     # Example query and passages
-    results = co.rerank(query=query, documents=text_docs, top_n=3, model="rerank-multilingual-v2.0")
+    results = co.rerank(query=query, documents=text_docs, top_n=2, model="rerank-multilingual-v2.0")
 
     return results
