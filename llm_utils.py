@@ -134,7 +134,7 @@ def generate_response(
         _context_string = f"{context_k}:\n"
         for doc in context_v:
             _context_string += f"{doc}\n\n"
-        logger.info(f"context for {context_k}: {_context_string}")
+        # logger.info(f"context for {context_k}: {_context_string}")
         llm_context += _context_string
 
     # prompt = SYSTEM_PROMPT + USER_PROMPT.format(query, doc_string_documentation, doc_string_discord)
@@ -150,4 +150,5 @@ def generate_response(
 
     response = complete_chat(messages, model=model, max_tokens=2047)
 
+    logger.info("Here is Sherlock's response:")
     logger.info(response.choices[0]["message"]["content"])

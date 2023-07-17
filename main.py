@@ -8,42 +8,13 @@ from argparse import ArgumentParser
 from read_discord import get_discord_messages
 from read_notebook import read_nbs
 from collections import defaultdict
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def main(args):
-    # query = "What is the capital of the United States?"
-    # query = "How can I create a chatbot and how can I add memory to it?"
-    # query = "FAISS.from_documents(docs, embedding) is so slow. Has anyone faced it before?"
-
-    # # documents = [
-    # #    "Carson City is the capital city of the American state of Nevada. At the  2010 United States Census, Carson City had a population of 55,274.",
-    # #    "The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean that are a political division controlled by the United States. Its capital is Saipan.",
-    # #    "Charlotte Amalie is the capital and largest city of the United States Virgin Islands. It has about 20,000 people. The city is on the island of Saint Thomas.",
-    # #    "Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district. ",
-    # #    "Capital punishment (the death penalty) has existed in the United States since before the United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.",
-    # #    "North Dakota is a state in the United States. 672,591 people lived in North Dakota in the year 2010. The capital and seat of government is Bismarck."
-    # #    ]
-    
-    # data = load_dataset(f"Cohere/wikipedia-22-12", "simple", split='train', streaming=True)
-    # # # sample_data = data
-    # sample_data = []
-
-    # counter = 0
-    # for d in data:
-    #     sample_data.append(d)
-    #     counter += 1
-    #     if counter == 1000:
-    #         break
-
-    # # all_docs =  map(lambda row : {"_index": index, "_id": row['id'], "_source": {"text": row['text']}}, data)
-    # all_docs =  map(lambda row : {"_index": index, "_id": row['id'], "_source": {"text": row['text']}}, sample_data)
-
-    # index = "wikipedia"
-
-    # text_docs = []
-
-    # for doc in all_docs:
-    #     text_docs.append(doc['_source']['text'])
     query = args.query
     repo = args.repo    
     top_k = args.top_k
@@ -57,11 +28,17 @@ def main(args):
         context_docs["MARKDOWN DOCUMENTS"].append(el.document['text'])
 
     if args.use_nb: 
-        md_cells, code_cells, md_id_to_cell_id, code_id_to_cell_id = read_nbs(repo) # returns markdown cells and code cells
+        cells, md_cells, code_cells, md_id_to_cell_id, code_id_to_cell_id = read_nbs(repo) # returns markdown cells and code cells
         top_md_nbs = cohere_rerank_retrieve_top_k(query, md_cells, top_k=top_k)
-        # QUESTION: can we find which markdown cell id was retrieved?
         for el in top_md_nbs:
+            md_cell_idx = el.index
+            cell_idx = md_id_to_cell_id[md_cell_idx]
+            # using the previous and next cells as context. Probably they are code cells??
+            if cell_idx > 0: 
+                context_docs["JUYPTER NOTEBOOKS"].append(cells[cell_idx-1])
             context_docs["JUYPTER NOTEBOOKS"].append(el.document['text'])
+            if cell_idx < len(cells)-1:
+                context_docs["JUYPTER NOTEBOOKS"].append(cells[cell_idx+1])
     
     if args.use_discord:
         discord_msgs = get_discord_messages(repo)
@@ -72,10 +49,8 @@ def main(args):
     # context_doc, context_discord, context_nb = [], [], []
     
     generate_response(
-        query=query, 
-        context_docs=context_docs,
-        # documents_doc=context_doc, 
-        # documents_discord=context_discord,
+        query=query,
+        context_docs=context_docs
     )
 
 

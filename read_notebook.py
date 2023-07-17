@@ -51,7 +51,7 @@ def read_nbs(repo):
                 code_cells.append(cell.source) 
                 code_id_to_cell_id[len(code_cells) - 1] = len(cells) - 1
 
-    return md_cells, code_cells, md_id_to_cell_id, code_id_to_cell_id
+    return cells, md_cells, code_cells, md_id_to_cell_id, code_id_to_cell_id
 
 
 if __name__ == "__main__":
