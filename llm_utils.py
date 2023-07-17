@@ -150,5 +150,4 @@ def generate_response(
 
     response = complete_chat(messages, model=model, max_tokens=2047)
 
-    # FIXME: uncomment the following line after debugging
-    # print(response.choices[0]["message"]["content"])
+    logger.info(response.choices[0]["message"]["content"])
