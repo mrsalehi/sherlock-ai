@@ -14,7 +14,7 @@ from typing import Dict, List, Tuple, Union
 
 
 # openai.api_key = os.environ.get")
-openai.api_key = "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"
+openai.api_key = "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"  # expired key ;)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

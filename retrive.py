@@ -2,7 +2,7 @@ import cohere
 from datasets import load_dataset
 import tqdm
 
-co = cohere.Client("v42IeRmnJ3hvf0hRZQrc8uSMOXExXDLotSxPsr7J")
+co = cohere.Client("v42IeRmnJ3hvf0hRZQrc8uSMOXExXDLotSxPsr7J")  # expired key ;)
 
 # Get your cohere API key on: www.cohere.com
 # def retrieve_top_docs(query, text_docs):
