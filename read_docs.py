@@ -76,7 +76,7 @@ def read_docs():
         with open(doc_p) as f:
             text_docs.append(f.read()) 
 
-    return chunk_docs(text_docs)
+    return chunk_docs(text_docs, chunk_size=512)
 
     
 if __name__ == "__main__":
