@@ -80,7 +80,7 @@ def read_md_docs(repo):
         with open(doc_p) as f:
             text_docs.append(f.read()) 
 
-    return chunk_docs(text_docs, chunk_size=256)
+    return chunk_docs(text_docs, chunk_size=512)
 
     
 if __name__ == "__main__":

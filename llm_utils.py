@@ -72,7 +72,7 @@ logger = logging.getLogger(__name__)
     
 @backoff.on_exception(backoff.expo, (RateLimitError, ServiceUnavailableError), max_time=60)
 def complete_chat(messages, model='gpt-3.5-turbo', max_tokens=256,  num_log_probs=None,  n=1, 
-                top_p = 1.0, temperature=1.0, stop = None, echo=True,
+                top_p = 1.0, temperature=0.5, stop = None, echo=True,
                 frequency_penalty = 0., presence_penalty=0. ):
 
     # call GPT-3 API until result is provided and then return it
