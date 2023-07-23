@@ -1,0 +1,357 @@
+[
+  {
+    id: '1116990191199076433',
+    type: 0,
+    content: '',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '1072591948499664996',
+      username: 'kapa.ai',
+      global_name: null,
+      avatar: '09e7b0315ef53d57936eb7d461f40224',
+      discriminator: '2237',
+      public_flags: 0,
+      bot: true,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [ [Object] ],
+    mentions: [],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:20:14.256000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [ [Object] ],
+    position: 8
+  },
+  {
+    id: '1116990184198782986',
+    type: 0,
+    content: '----------------------\n' +
+      'Mapping one embedding to another is typically done using techniques like linear transformation, neural networks, or other machine learning methods. However, the information extracts provided do not contain specific details or code examples on how to map embeddings from one model to another within LangChain.\n' +
+      '\n' +
+      "If you're interested in learning more about mapping embeddings, you might want to explore research papers, articles, or tutorials on the topic. Keep in mind that this process is not specific to LangChain and would require additional tools and techniques outside of the LangChain library.\n" +
+      '----------------------\n' +
+      '`Note: you can ask me a follow up question by @ mentioning me again` :speech_balloon:\n' +
+      '----------------------',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '1072591948499664996',
+      username: 'kapa.ai',
+      global_name: null,
+      avatar: '09e7b0315ef53d57936eb7d461f40224',
+      discriminator: '2237',
+      public_flags: 0,
+      bot: true,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [],
+    mentions: [],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:20:12.587000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [],
+    position: 7
+  },
+  {
+    id: '1116990092922335272',
+    type: 0,
+    content: 'Let me check the knowledge base for you. One moment! :books:',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '1072591948499664996',
+      username: 'kapa.ai',
+      global_name: null,
+      avatar: '09e7b0315ef53d57936eb7d461f40224',
+      discriminator: '2237',
+      public_flags: 0,
+      bot: true,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [],
+    mentions: [],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:19:50.825000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [],
+    position: 6
+  },
+  {
+    id: '1116990092112830495',
+    type: 0,
+    content: '<@1072591948499664996> how can i map one embedding to another',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '379318534070861834',
+      username: 'boredchilli',
+      global_name: null,
+      avatar: 'a716c7bb5109a3949ecebec081715ce3',
+      discriminator: '9051',
+      public_flags: 0,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [],
+    mentions: [ [Object] ],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:19:50.632000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [],
+    position: 5
+  },
+  {
+    id: '1116989996096819231',
+    type: 0,
+    content: '<@1072591948499664996> how can i map one embedding to another',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '379318534070861834',
+      username: 'boredchilli',
+      global_name: null,
+      avatar: 'a716c7bb5109a3949ecebec081715ce3',
+      discriminator: '9051',
+      public_flags: 0,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [],
+    mentions: [ [Object] ],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:19:27.740000+00:00',
+    edited_timestamp: '2023-06-10T07:19:42.371000+00:00',
+    flags: 0,
+    components: [],
+    position: 4
+  },
+  {
+    id: '1116989396416208897',
+    type: 0,
+    content: '',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '1072591948499664996',
+      username: 'kapa.ai',
+      global_name: null,
+      avatar: '09e7b0315ef53d57936eb7d461f40224',
+      discriminator: '2237',
+      public_flags: 0,
+      bot: true,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [ [Object] ],
+    mentions: [],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:17:04.765000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [ [Object] ],
+    position: 3
+  },
+  {
+    id: '1116989389080367186',
+    type: 0,
+    content: 'Sources:\n' +
+      '- **Python: OpenAIEmbeddings** (https://python.langchain.com/en/latest/reference/modules/embeddings.html)\n' +
+      '- **Python: HuggingFaceEmbeddings** (https://python.langchain.com/en/latest/integrations/huggingface.html)\n' +
+      '- **JavaScript: OpenAIEmbeddings** (https://js.langchain.com/docs/modules/models/embeddings/integrations)\n' +
+      '----------------------\n' +
+      '`Note: you can ask me a follow up question by @ mentioning me again` :speech_balloon:\n' +
+      '----------------------',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '1072591948499664996',
+      username: 'kapa.ai',
+      global_name: null,
+      avatar: '09e7b0315ef53d57936eb7d461f40224',
+      discriminator: '2237',
+      public_flags: 0,
+      bot: true,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [ [Object] ],
+    mentions: [],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:17:03.016000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [],
+    position: 2
+  },
+  {
+    id: '1116989383355146250',
+    type: 0,
+    content: '----------------------\n' +
+      'Yes, it is possible to have two sets of embeddings in LangChain. You can use different embedding models or providers to generate separate sets of embeddings for your text. For example, you can use OpenAIEmbeddings for one set and HuggingFaceEmbeddings for another set.\n' +
+      '\n' +
+      "Here's an example using Python with OpenAIEmbeddings and HuggingFaceEmbeddings:\n" +
+      '\n' +
+      '```python\n' +
+      'from langchain.embeddings import OpenAIEmbeddings, HuggingFaceEmbeddings\n' +
+      '\n' +
+      '# OpenAI Embeddings\n' +
+      'openai_embeddings = OpenAIEmbeddings(openai_api_key="YOUR-API-KEY")\n' +
+      '\n' +
+      '# Hugging Face Embeddings\n' +
+      'huggingface_embeddings = HuggingFaceEmbeddings()\n' +
+      '\n' +
+      '# Embedding text using both models\n' +
+      'text = "This is a sample text."\n' +
+      '\n' +
+      'openai_result = openai_embeddings.embed_query(text)\n' +
+      'huggingface_result = huggingface_embeddings.embed_query(text)\n' +
+      '```\n' +
+      '\n' +
+      "And here's an example using JavaScript with OpenAIEmbeddings:\n" +
+      '\n' +
+      '```javascript\n' +
+      'import { OpenAIEmbeddings } from "langchain/embeddings/openai";\n' +
+      '\n' +
+      'const openaiEmbeddings1 = new OpenAIEmbeddings({\n' +
+      '  openAIApiKey: "YOUR-API-KEY-1",\n' +
+      '});\n' +
+      '\n' +
+      'const openaiEmbeddings2 = new OpenAIEmbeddings({\n' +
+      '  openAIApiKey: "YOUR-API-KEY-2",\n' +
+      '});\n' +
+      '\n' +
+      'const text = "This is a sample text.";\n' +
+      '\n' +
+      'const embeddings1 = await openaiEmbeddings1.embedQuery(text);\n' +
+      'const embeddings2 = await openaiEmbeddings2.embedQuery(text);\n' +
+      '```\n' +
+      '\n' +
+      'In these examples, `openai_result` and `huggingface_result` (or `embeddings1` and `embeddings2` in JavaScript) will contain two different sets of embeddings for the given text.',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '1072591948499664996',
+      username: 'kapa.ai',
+      global_name: null,
+      avatar: '09e7b0315ef53d57936eb7d461f40224',
+      discriminator: '2237',
+      public_flags: 0,
+      bot: true,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [],
+    mentions: [],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:17:01.651000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [],
+    position: 1
+  },
+  {
+    id: '1116989143256412160',
+    type: 0,
+    content: 'Please stand by <@379318534070861834> as I search the knowledge base. We are experiencing especially high traffic right now and might take longer than usual. :wave:',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '1072591948499664996',
+      username: 'kapa.ai',
+      global_name: null,
+      avatar: '09e7b0315ef53d57936eb7d461f40224',
+      discriminator: '2237',
+      public_flags: 0,
+      bot: true,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [],
+    mentions: [ [Object] ],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:16:04.407000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [],
+    position: 0
+  },
+  {
+    id: '1116989142350442536',
+    type: 21,
+    content: '',
+    channel_id: '1116989141549334619',
+    author: {
+      id: '1072591948499664996',
+      username: 'kapa.ai',
+      global_name: null,
+      avatar: '09e7b0315ef53d57936eb7d461f40224',
+      discriminator: '2237',
+      public_flags: 0,
+      bot: true,
+      avatar_decoration: null
+    },
+    attachments: [],
+    embeds: [],
+    mentions: [ [Object] ],
+    mention_roles: [],
+    pinned: false,
+    mention_everyone: false,
+    tts: false,
+    timestamp: '2023-06-10T07:16:04.191000+00:00',
+    edited_timestamp: null,
+    flags: 0,
+    components: [],
+    message_reference: {
+      channel_id: '1072944049788555314',
+      guild_id: '1038097195422978059',
+      message_id: '1116989141549334619'
+    },
+    position: 0,
+    referenced_message: {
+      id: '1116989141549334619',
+      type: 0,
+      content: '<@1072591948499664996> is it possible to have 2 sets of embeddings',
+      channel_id: '1072944049788555314',
+      author: [Object],
+      attachments: [],
+      embeds: [],
+      mentions: [Array],
+      mention_roles: [],
+      pinned: false,
+      mention_everyone: false,
+      tts: false,
+      timestamp: '2023-06-10T07:16:04+00:00',
+      edited_timestamp: null,
+      flags: 32,
+      components: [],
+      thread: [Object]
+    }
+  }
+]
+done
