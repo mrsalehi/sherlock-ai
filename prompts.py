@@ -8,9 +8,16 @@ Here are the requirements for the output:
 If you want to mention anything about discord in your answer, please start with "There might be some relevant discussions on discord".
 """
 
+# USER_PROMPT = """
+# QUERY: {}
+# DOCUMENTATION DOCUMENTS: {}
+# DISCORD DISCUSSIONS: {}
+# ANSWER:
+# """
+
 USER_PROMPT = """
 QUERY: {}
-DOCUMENTATION DOCUMENTS: {}
-DISCORD DISCUSSIONS: {}
+HERE ARE THE CONTEXT DOCUMENTS THAT YOU MUST USE TO GENERATE THE ANSWER:
+{}
 ANSWER:
 """
