@@ -6,4 +6,4 @@ def onNewMessage(msg):
   save_data(msg)
 
 def start_pipeline:
-  readMessages()
+  readMessages(onNewMessage)
