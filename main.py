@@ -1,5 +1,5 @@
 
-from retrive import cohere_rerank_retrieve_top_k
+from retrieve.cohere_rerank import cohere_rerank_retrieve_top_k
 from datasets import load_dataset
 from llm_utils import generate_response
 from read_md_doc import read_md_docs
