@@ -1,10 +1,12 @@
 """
 OpenAI Embedding API
 """
+import os
 import openai
 from typing import List
+# read openai key from env
 
-openai.api_key = "TEST_KEY"  # FIXME: put the key here later
+openai.api_key = os.environ.get("OPENAI_KEY")
 # get API key from top-right dropdown on OpenAI website
 
 openai.Engine.list()  # check we have authenticated

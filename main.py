@@ -60,6 +60,7 @@ if __name__ == "__main__":
     parser.add_argument("--repo", type=str, required=True)  # for now we only support langchain and llama index repos
     parser.add_argument("--use_discord", action="store_true", default=False, help="use discord messages to answer the query")
     parser.add_argument("--use_nb", action="store_true", default=False, help="use jupyter notebooks to answer the query")
+
     # NOTE: Please read the docstring of the generate_response function in llm_generate_response.py for more details on the following argument
     parser.add_argument("--llm_context_mode", type=str, default="all_in_one_context", choices=["all_in_one_context", "separate_context"])
 
