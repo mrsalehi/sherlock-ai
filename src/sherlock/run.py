@@ -1,12 +1,12 @@
 
 from retrieve.cohere_rerank import cohere_rerank_retrieve_top_k
 from datasets import load_dataset
-from llm_utils import generate_response
-from read_md_doc import read_md_docs
+from src.sherlock.llm.llm_utils import generate_response
+from src.sherlock.ingestion.markdown.read_md_doc import read_md_docs
 import json
 from argparse import ArgumentParser
 from read_discord import get_discord_messages
-from read_notebook import read_nbs
+from src.sherlock.ingestion.notebook.read_notebook import read_nbs
 from collections import defaultdict
 import logging
 
