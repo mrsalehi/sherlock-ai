@@ -1,12 +1,12 @@
 
-from retrive import cohere_rerank_retrieve_top_k
+from retrieve.cohere_rerank import cohere_rerank_retrieve_top_k
 from datasets import load_dataset
-from llm_utils import generate_response
-from read_md_doc import read_md_docs
+from src.sherlock.llm.llm_utils import generate_response
+from src.sherlock.ingestion.markdown.read_md_doc import read_md_docs
 import json
 from argparse import ArgumentParser
 from read_discord import get_discord_messages
-from read_notebook import read_nbs
+from src.sherlock.ingestion.notebook.read_notebook import read_nbs
 from collections import defaultdict
 import logging
 
@@ -60,6 +60,7 @@ if __name__ == "__main__":
     parser.add_argument("--repo", type=str, required=True)  # for now we only support langchain and llama index repos
     parser.add_argument("--use_discord", action="store_true", default=False, help="use discord messages to answer the query")
     parser.add_argument("--use_nb", action="store_true", default=False, help="use jupyter notebooks to answer the query")
+
     # NOTE: Please read the docstring of the generate_response function in llm_generate_response.py for more details on the following argument
     parser.add_argument("--llm_context_mode", type=str, default="all_in_one_context", choices=["all_in_one_context", "separate_context"])
 
