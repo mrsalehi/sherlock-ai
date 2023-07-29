@@ -29,6 +29,13 @@ class DiscordConfig:
         
 
 class DiscordConnector:
+    """
+    Example usage:
+    
+        Discord = DiscordConnector()
+        print(Discord.get_messages())
+    """
+
     def __init__(self) -> None:
         self.config = DiscordConfig()
         self.messages: List[discord.Message] = []
@@ -92,8 +99,3 @@ class DiscordConnector:
         
         self.bot.run(self.config.token)
         return self.messages
-
-
-
-Discord = DiscordConnector()
-print(Discord.get_messages())
