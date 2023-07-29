@@ -4,3 +4,6 @@ package-lock.json**/.DS_Store
 .DS_Store
 .vscode
 __pycache__
+
+ingestion/discord/config.yaml
+ingestion/discord/*.json
