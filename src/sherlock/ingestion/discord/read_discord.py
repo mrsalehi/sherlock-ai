@@ -81,7 +81,7 @@ class DiscordConnector:
                 print(f"Fetching all messages after {after_date}")
 
                 channel = self.bot.get_channel(self.config.channelId)
-                async for msg in channel.history(after=after_date, limit=5):
+                async for msg in channel.history(after=after_date, limit=None):
                     self.messages.append(msg.content)
 
                 # Update the timestamp json to now when we succeed so we can fetch the new messages we haven't yet read
