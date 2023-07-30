@@ -2,7 +2,7 @@ import os
 import time
 import sys
 import openai
-from src.sherlock.llm.prompts import SYSTEM_PROMPT, USER_PROMPT
+from sherlock.llm.prompts import SYSTEM_PROMPT, USER_PROMPT
 
 from multiprocessing import Pool
 from tqdm import tqdm

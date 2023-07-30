@@ -7,3 +7,4 @@ __pycache__
 
 ingestion/discord/config.yaml
 ingestion/discord/*.json
+**/sherlock.egg-info
