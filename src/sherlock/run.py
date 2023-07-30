@@ -1,14 +1,15 @@
 
-from retrieve.cohere_rerank import cohere_rerank_retrieve_top_k
-from datasets import load_dataset
-from src.sherlock.llm.llm_utils import generate_response
-from src.sherlock.ingestion.markdown.read_md_doc import read_md_docs
-import json
-from argparse import ArgumentParser
-from read_discord import get_discord_messages
-from src.sherlock.ingestion.notebook.read_notebook import read_nbs
-from collections import defaultdict
 import logging
+from argparse import ArgumentParser
+from collections import defaultdict
+
+from datasets import load_dataset
+
+from sherlock.rerank.cohere_rerank import cohere_rerank_retrieve_top_k
+from sherlock.llm.llm_utils import generate_response
+from sherlock.ingestion.markdown.read_md_doc import read_md_docs
+from sherlock.ingestion.discord.read_discord import DiscordConnector
+from sherlock.ingestion.notebook.read_notebook import read_nbs
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
