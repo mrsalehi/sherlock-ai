@@ -33,7 +33,7 @@ class DiscordChannelConfig:
             with open(config_path, "r") as file:
                 return yaml.safe_load(file)
         except FileNotFoundError:
-            print("No config file found containing discord configuration")
+            logger.error("No config file found containing discord configuration")
         
 
 class DiscordChannelConnector:
@@ -86,7 +86,7 @@ class DiscordChannelConnector:
                 timestamp = self._get_timestamp_from_file()
                 after_date = timestamp
 
-                print(f"Fetching all messages after {after_date}")
+                logger.info(f"Fetching all messages after {after_date}")
 
                 channel = self.bot.get_channel(self.config.channel_id)
                 async for msg in channel.history(after=after_date, limit=None):
@@ -99,7 +99,7 @@ class DiscordChannelConnector:
                 await self.bot.close()
 
             except Exception as e:
-                print("Received error: ", e)
+                logger.error("Received error: ", e)
                 await self.bot.close()
                 # If we fail, delete the timestamp file so we retry it for next time.
                 self._delete_timestamp_file()
