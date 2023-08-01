@@ -1,0 +1,25 @@
+query: "How does Instructor embedding work?"
+discord:
+  enable: true
+  channel: 123
+  token: abc
+markdown:
+  path: "examples/docs/llama_index"
+llm:
+  context_mode: "all_in_one"
+  name: llama
+  llama:
+    context_length: 1024
+rerank:
+  enable: true
+  model_name: cohere_rerank
+  top_k: 4
+vector_index: 
+  enable: true
+  name: pinecone
+embeddings:
+  enable: false
+  model: text-embedding-ada-002
+notebook:
+  enable: false
+  path: "examples/docs/llama_index"
