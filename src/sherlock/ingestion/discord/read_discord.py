@@ -7,10 +7,11 @@ from datetime import datetime, timezone
 import os
 import pytz
 import logging
+from sherlock.utils import read_env_var, logger
 
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+# logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger(__name__)
 
 
 class DiscordChannelConfig:
@@ -20,6 +21,8 @@ class DiscordChannelConfig:
 
         try:
             self.token = config['token']
+            if self.token.startswith("${") and self.token.endswith("}"):
+                self.token = read_env_var(self.token[2:-1])
         except KeyError:
             raise KeyError("Missing token from Discord configuration")
         
@@ -33,7 +36,7 @@ class DiscordChannelConfig:
             with open(config_path, "r") as file:
                 return yaml.safe_load(file)
         except FileNotFoundError:
-            print("No config file found containing discord configuration")
+            logger.error("No config file found containing discord configuration")
         
 
 class DiscordChannelConnector:
@@ -48,9 +51,10 @@ class DiscordChannelConnector:
         self.config = DiscordChannelConfig(config_path)
         self.messages: List[discord.Message] = []
 
-        intents = discord.Intents.default()
+        # intents = discord.Intents.default()
+        intents = discord.Intents.all()
         intents.message_content = True
-        self.timestamp_fpath = f"data/{self.config.channel_id}.json"
+        self._timestamp_fpath = f"data/{self.config.channel_id}.json"
         self.bot = commands.Bot(command_prefix=">", intents=intents)
 
     def _get_current_timestamp(self):
@@ -58,25 +62,24 @@ class DiscordChannelConnector:
 
     def _get_timestamp_from_file(self):
         try:
-            with open(self.timestamp_file, "r") as file:
+            with open(self._timestamp_fpath, "r") as file:
                 dict = json.load(file)
                 iso_timestamp_str = dict["last_fetch"]
-                return datetime.fromisoformat(iso_timestamp_str)
-        
+                return datetime.fromisoformat(iso_timestamp_str) 
         except FileNotFoundError:
             # Create a new file instead with the same timestamp
             self._rewrite_timestamp_file()
             return None
     
     def _delete_timestamp_file(self):
-        logger.warning(f"Deleting timestamp file {self.timestamp_fpath}")
+        logger.warning(f"Deleting timestamp file {self._timestamp_fpath}")
         os.remove(self.timestamp_fpath)
 
     def _rewrite_timestamp_file(self):
         data = {"last_fetch": self._get_current_timestamp()}
         json_data = json.dumps(data, indent=4)
         
-        with open(self.timestamp_fpath, "w") as file:
+        with open(self._timestamp_fpath, "w") as file:
             file.write(json_data)
 
     def get_messages(self):
@@ -84,11 +87,12 @@ class DiscordChannelConnector:
         async def on_ready():
             try:
                 timestamp = self._get_timestamp_from_file()
+                logger.debug(f"Timestamp from file: {timestamp}")
                 after_date = timestamp
 
-                print(f"Fetching all messages after {after_date}")
-
+                logger.info(f"Fetching all messages after {after_date}")
                 channel = self.bot.get_channel(self.config.channel_id)
+
                 async for msg in channel.history(after=after_date, limit=None):
                     self.messages.append(msg.content)
 
@@ -99,11 +103,11 @@ class DiscordChannelConnector:
                 await self.bot.close()
 
             except Exception as e:
-                print("Received error: ", e)
+                logger.error("Received error: ", e)
                 await self.bot.close()
                 # If we fail, delete the timestamp file so we retry it for next time.
                 self._delete_timestamp_file()
                 raise e
-        
+
         self.bot.run(self.config.token)
         return self.messages

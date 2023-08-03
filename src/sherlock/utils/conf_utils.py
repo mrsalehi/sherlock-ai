@@ -1,6 +1,7 @@
 import argparse
 import yaml
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -55,3 +56,12 @@ def override_config_with_parsed_args(config, parsed_args):
             update_nested_dict(config, keys, value)
 
     return dict_to_namespace(config)
+
+
+def read_env_var(var_name):
+    """Read environment variable."""
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        logger.error(f"Environment variable {var_name} not set.")
+        raise
