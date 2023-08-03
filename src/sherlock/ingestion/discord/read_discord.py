@@ -111,10 +111,3 @@ class DiscordChannelConnector:
 
         self.bot.run(self.config.token)
         return self.messages
-
-
-if __name__ == "__main__":
-    config_fpath = "tests/data/test_discord_config.yaml"
-    discord_connector = DiscordChannelConnector(config_fpath)
-    messages = discord_connector.get_messages()
-    print(messages)
